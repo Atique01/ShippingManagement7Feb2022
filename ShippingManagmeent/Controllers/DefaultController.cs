@@ -12,7 +12,7 @@ namespace ShippingManagmeent.Controllers
         public ActionResult Index()
         {
 
-            string myvar = "test this is string";
+            string myvar1 = "test this is string";
 
 
             return View();
