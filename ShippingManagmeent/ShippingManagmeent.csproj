@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ShippingManagmeent</RootNamespace>
     <AssemblyName>ShippingManagmeent</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -22,6 +23,9 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,6 +48,12 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -53,14 +63,16 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -82,15 +94,14 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -99,27 +110,293 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Batch_Comments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Products.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Client_Product_Plan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\Inbound_Shipment_StatusController.cs" />
+    <Compile Include="Controllers\Product_StatusController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\SAMY_ClientController.cs" />
+    <Compile Include="Controllers\SAMY_ProductsController.cs" />
+    <Compile Include="Departement.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeMaster.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Inbound_Shipment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inbound_Shipment_Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryPosition.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Location.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Outbound_Shipment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Outbound_Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Packing_Batch.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Packing_Details.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Packing_Type.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Analysis.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Batch.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Batch_History.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Batch_Location.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Batch_Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Number_Batch_Trans.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Quality.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product_Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder_Customer.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesOrder_Line.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAMY_Client.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SAMY_Products.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-grid.css" />
-    <Content Include="Content\bootstrap-grid.min.css" />
-    <Content Include="Content\bootstrap-reboot.css" />
-    <Content Include="Content\bootstrap-reboot.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ajax\libs\moment_js\2.11.2\moment.min.js" />
+    <Content Include="Content\bizadmin\demo\apps-calendar.html" />
+    <Content Include="Content\bizadmin\demo\apps-compose-mail.html" />
+    <Content Include="Content\bizadmin\demo\apps-contact-details.html" />
+    <Content Include="Content\bizadmin\demo\apps-contact-grid.html" />
+    <Content Include="Content\bizadmin\demo\apps-contacts.html" />
+    <Content Include="Content\bizadmin\demo\apps-mailbox-detail.html" />
+    <Content Include="Content\bizadmin\demo\apps-mailbox.html" />
+    <Content Include="Content\bizadmin\demo\apps-support-ticket.html" />
+    <Content Include="Content\bizadmin\demo\chart-chart-js.html" />
+    <Content Include="Content\bizadmin\demo\chart-chartist.html" />
+    <Content Include="Content\bizadmin\demo\chart-knob.html" />
+    <Content Include="Content\bizadmin\demo\chart-morris.html" />
+    <Content Include="Content\bizadmin\demo\chart-peity.html" />
+    <Content Include="Content\bizadmin\demo\dist\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\css\et-line-font\et-line-font.css" />
+    <Content Include="Content\bizadmin\demo\dist\css\et-line-font\fonts\et-line.svg" />
+    <Content Include="Content\bizadmin\demo\dist\css\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\bizadmin\demo\dist\css\simple-lineicon\fonts\Simple-Line-Icons.svg" />
+    <Content Include="Content\bizadmin\demo\dist\css\simple-lineicon\simple-line-icons.css" />
+    <Content Include="Content\bizadmin\demo\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\css\style.css" />
+    <Content Include="Content\bizadmin\demo\dist\css\themify-icons\fonts\themify.svg" />
+    <Content Include="Content\bizadmin\demo\dist\css\themify-icons\themify-icons.css" />
+    <Content Include="Content\bizadmin\demo\dist\img\body-bg.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\body-bg1.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\boxed-bg.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\favicon-16x16.png" />
+    <Content Include="Content\bizadmin\demo\dist\img\img1.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img10.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img11.png" />
+    <Content Include="Content\bizadmin\demo\dist\img\img2.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img22.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img3.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img4.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img5.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img6.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img7.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img8.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\img9.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\img\logo-small.png" />
+    <Content Include="Content\bizadmin\demo\dist\img\Logo.png" />
+    <Content Include="Content\bizadmin\demo\dist\img\user-bg.jpg" />
+    <Content Include="Content\bizadmin\demo\dist\js\bizadmin.js" />
+    <Content Include="Content\bizadmin\demo\dist\js\demo.js" />
+    <Content Include="Content\bizadmin\demo\dist\js\jquery.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\calendar\fullcalendar.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\calendar\fullcalendar.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\calendar\fullcalendar.print.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartist-js\chartist-plugin-tooltip.css" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartist-js\chartist-plugin-tooltip.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartist-js\chartist.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartist-js\chartist.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartjs\chart-int.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartjs\chart.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\chartjs\chartist-init-index-classic.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\functions\chartist-init.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\functions\dashboard1.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\jquery-sparklines\jquery.sparkline.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\jquery-sparklines\sparkline-int.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\morris\morris.js" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\raphael\raphael-min.js" />
+    <Content Include="Content\bizadmin\demo\form-elements.html" />
+    <Content Include="Content\bizadmin\demo\form-layouts.html" />
+    <Content Include="Content\bizadmin\demo\form-summernote.html" />
+    <Content Include="Content\bizadmin\demo\form-uploads.html" />
+    <Content Include="Content\bizadmin\demo\form-validation.html" />
+    <Content Include="Content\bizadmin\demo\form-wizard.html" />
+    <Content Include="Content\bizadmin\demo\icon-flag.html" />
+    <Content Include="Content\bizadmin\demo\icon-fontawesome.html" />
+    <Content Include="Content\bizadmin\demo\icon-simple-lineicon.html" />
+    <Content Include="Content\bizadmin\demo\icon-themify.html" />
+    <Content Include="Content\bizadmin\demo\icon-weather.html" />
+    <Content Include="Content\bizadmin\demo\index-agency.html" />
+    <Content Include="Content\bizadmin\demo\index-analytics.html" />
+    <Content Include="Content\bizadmin\demo\index-classic.html" />
+    <Content Include="Content\bizadmin\demo\index-ecommerce.html" />
+    <Content Include="Content\bizadmin\demo\map-google.html" />
+    <Content Include="Content\bizadmin\demo\map-vector.html" />
+    <Content Include="Content\bizadmin\demo\pages-404.html" />
+    <Content Include="Content\bizadmin\demo\pages-blank.html" />
+    <Content Include="Content\bizadmin\demo\pages-faq.html" />
+    <Content Include="Content\bizadmin\demo\pages-gallery.html" />
+    <Content Include="Content\bizadmin\demo\pages-invoice.html" />
+    <Content Include="Content\bizadmin\demo\pages-lockscreen.html" />
+    <Content Include="Content\bizadmin\demo\pages-login-2.html" />
+    <Content Include="Content\bizadmin\demo\pages-login.html" />
+    <Content Include="Content\bizadmin\demo\pages-pricing.html" />
+    <Content Include="Content\bizadmin\demo\pages-profile.html" />
+    <Content Include="Content\bizadmin\demo\pages-recover-password.html" />
+    <Content Include="Content\bizadmin\demo\pages-register.html" />
+    <Content Include="Content\bizadmin\demo\pages-register2.html" />
+    <Content Include="Content\bizadmin\demo\pages-treeview.html" />
+    <Content Include="Content\bizadmin\demo\table-basic.html" />
+    <Content Include="Content\bizadmin\demo\table-data-table.html" />
+    <Content Include="Content\bizadmin\demo\table-jsgrid.html" />
+    <Content Include="Content\bizadmin\demo\table-layout.html" />
+    <Content Include="Content\bizadmin\demo\ui-bootstrap-switch.html" />
+    <Content Include="Content\bizadmin\demo\ui-breadcrumb.html" />
+    <Content Include="Content\bizadmin\demo\ui-buttons.html" />
+    <Content Include="Content\bizadmin\demo\ui-cards.html" />
+    <Content Include="Content\bizadmin\demo\ui-carousel.html" />
+    <Content Include="Content\bizadmin\demo\ui-grid.html" />
+    <Content Include="Content\bizadmin\demo\ui-horizontal-timeline.html" />
+    <Content Include="Content\bizadmin\demo\ui-list-media.html" />
+    <Content Include="Content\bizadmin\demo\ui-notification.html" />
+    <Content Include="Content\bizadmin\demo\ui-progressbar.html" />
+    <Content Include="Content\bizadmin\demo\ui-range-slider.html" />
+    <Content Include="Content\bizadmin\demo\ui-tab.html" />
+    <Content Include="Content\bizadmin\demo\ui-timeline.html" />
+    <Content Include="Content\bizadmin\demo\ui-tooltip-popover.html" />
+    <Content Include="Content\bizadmin\demo\ui-typography.html" />
+    <Content Include="Content\bizadmin\demo\ui-user-card.html" />
+    <Content Include="Content\bizadmin\demo\widget-apps.html" />
+    <Content Include="Content\bizadmin\demo\widget-data.html" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\dist\css\style.css.txt" />
+    <Content Include="Content\files_count.xml" />
+    <Content Include="Content\fonts\fontomas-webfont.svg" />
+    <Content Include="Content\images\1.jpeg" />
+    <Content Include="Content\images\tick.png" />
+    <Content Include="Content\index.html" />
+    <Content Include="Content\index1.html" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\bizadmin\demo\dist\css\et-line-font\fonts\et-line.eot" />
+    <Content Include="Content\bizadmin\demo\dist\css\et-line-font\fonts\et-line.ttf" />
+    <Content Include="Content\bizadmin\demo\dist\css\et-line-font\fonts\et-line.woff" />
+    <Content Include="Content\bizadmin\demo\dist\css\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\bizadmin\demo\dist\css\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\bizadmin\demo\dist\css\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\bizadmin\demo\dist\css\simple-lineicon\fonts\Simple-Line-Icons.eot" />
+    <Content Include="Content\bizadmin\demo\dist\css\simple-lineicon\fonts\Simple-Line-Icons.ttf" />
+    <Content Include="Content\bizadmin\demo\dist\css\simple-lineicon\fonts\Simple-Line-Icons.woff" />
+    <Content Include="Content\bizadmin\demo\dist\css\themify-icons\fonts\themify.eot" />
+    <Content Include="Content\bizadmin\demo\dist\css\themify-icons\fonts\themify.ttf" />
+    <Content Include="Content\bizadmin\demo\dist\css\themify-icons\fonts\themify.woff" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\bizadmin\demo\dist\plugins\datatables\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\fontomas-webfont.eot" />
+    <Content Include="Content\fonts\fontomas-webfont.ttf" />
+    <Content Include="Content\fonts\fontomas-webfont.woff" />
     <None Include="packages.config" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -138,6 +415,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Shared\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -146,6 +424,32 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="Views\SAMY_Products\Create.cshtml" />
+    <Content Include="Views\SAMY_Products\Delete.cshtml" />
+    <Content Include="Views\SAMY_Products\Details.cshtml" />
+    <Content Include="Views\SAMY_Products\Edit.cshtml" />
+    <Content Include="Views\SAMY_Products\Index.cshtml" />
+    <Content Include="Views\SAMY_Client\Create.cshtml" />
+    <Content Include="Views\SAMY_Client\Delete.cshtml" />
+    <Content Include="Views\SAMY_Client\Details.cshtml" />
+    <Content Include="Views\SAMY_Client\Edit.cshtml" />
+    <Content Include="Views\SAMY_Client\Index.cshtml" />
+    <Content Include="Views\Product_Status\Create.cshtml" />
+    <Content Include="Views\Product_Status\Delete.cshtml" />
+    <Content Include="Views\Product_Status\Details.cshtml" />
+    <Content Include="Views\Product_Status\Edit.cshtml" />
+    <Content Include="Views\Product_Status\Index.cshtml" />
+    <Content Include="Views\Inbound_Shipment_Status\Create.cshtml" />
+    <Content Include="Views\Inbound_Shipment_Status\Delete.cshtml" />
+    <Content Include="Views\Inbound_Shipment_Status\Details.cshtml" />
+    <Content Include="Views\Inbound_Shipment_Status\Edit.cshtml" />
+    <Content Include="Views\Inbound_Shipment_Status\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -156,6 +460,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -185,6 +492,14 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

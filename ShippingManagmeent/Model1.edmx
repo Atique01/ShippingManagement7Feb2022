@@ -1,0 +1,2391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SAMYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Batch_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Client_Product_Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="int" Nullable="false" />
+          <Property Name="MassPlan" Type="int" Nullable="false" />
+          <Property Name="PlannedMonth" Type="int" Nullable="false" />
+          <Property Name="PlannedYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="5" />
+          <Property Name="Plant" Type="int" />
+        </EntityType>
+        <EntityType Name="Departement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Departement" Type="varchar" MaxLength="255" />
+          <Property Name="dstatus" Type="int" />
+          <Property Name="CtrateDate" Type="smalldatetime" />
+          <Property Name="Updatedate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="email" Type="varchar" MaxLength="40" />
+          <Property Name="Mobile" Type="varchar" MaxLength="10" />
+          <Property Name="deptid" Type="int" />
+          <Property Name="roleid" Type="int" />
+          <Property Name="CtrateDate" Type="smalldatetime" />
+          <Property Name="Updatedate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Inbound_Shipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShippingNumber" Type="int" Nullable="false" />
+          <Property Name="ShipmentDate" Type="datetime" Nullable="false" />
+          <Property Name="Status_ID" Type="int" Nullable="false" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+          <Property Name="AcknowledgeDate" Type="datetime" />
+          <Property Name="isLock" Type="bit" Nullable="false" />
+          <Property Name="LockedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="MES_RefID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Inbound_Shipment_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InventoryPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="int" Nullable="false" />
+          <Property Name="ReportPeriod" Type="nvarchar" MaxLength="10" />
+          <Property Name="Quality" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpenMetalPad" Type="int" />
+          <Property Name="OpenIntransit" Type="int" />
+          <Property Name="OpenPrebill" Type="int" />
+          <Property Name="TransferPerProduct" Type="int" />
+          <Property Name="MonthlyTransfer" Type="int" />
+          <Property Name="DailyTransfer" Type="int" />
+          <Property Name="DailyRejected" Type="int" />
+          <Property Name="MonthlyIntransit" Type="int" />
+          <Property Name="Daily_Sohar_Container" Type="int" />
+          <Property Name="Daily_Sohar_Breakbulk" Type="int" />
+          <Property Name="OtherPort_Container" Type="int" />
+          <Property Name="OtherPort_Breakbulk" Type="int" />
+          <Property Name="RegionalIntransit" Type="int" />
+          <Property Name="TotalIntransit" Type="int" />
+          <Property Name="DailyStockCorrection" Type="int" />
+          <Property Name="MonthlyStockCorrection" Type="int" />
+          <Property Name="DailyShipped" Type="int" />
+          <Property Name="TotalShipped" Type="int" />
+          <Property Name="TotalShippedRgional" Type="int" />
+          <Property Name="MetalPadEnd" Type="int" />
+          <Property Name="TotalInventory" Type="int" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="day" Type="int" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="lstatus" Type="int" />
+          <Property Name="CtrateDate" Type="smalldatetime" />
+          <Property Name="Updatedate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="smalldatetime" />
+          <Property Name="logout" Type="smalldatetime" />
+          <Property Name="ip" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="10" />
+          <Property Name="Ip" Type="varchar" MaxLength="255" />
+          <Property Name="locationid" Type="varchar" MaxLength="255" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="empid" Type="int" />
+          <Property Name="deptid" Type="int" />
+          <Property Name="lstatus" Type="int" />
+          <Property Name="CtrateDate" Type="smalldatetime" />
+          <Property Name="Updatedate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Outbound_Shipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="SalesOrderNumber" Type="int" />
+          <Property Name="LineItemNumber" Type="int" />
+          <Property Name="Plant" Type="nvarchar" MaxLength="50" />
+          <Property Name="Product" Type="nvarchar" MaxLength="50" />
+          <Property Name="NetWeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="UoM" Type="nvarchar" MaxLength="50" />
+          <Property Name="GrossWeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pieces" Type="nvarchar" MaxLength="50" />
+          <Property Name="Bundles" Type="nvarchar" MaxLength="50" />
+          <Property Name="Containers" Type="nvarchar" MaxLength="50" />
+          <Property Name="ColourMarkings" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPMSalesOrderNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="OPMSalesOrderLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="sendStatus" Type="bit" />
+          <Property Name="sendTime" Type="datetime" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChanedDate" Type="datetime" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="Shipment_Status" Type="int" />
+          <Property Name="ShipmentType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="int" />
+        </EntityType>
+        <EntityType Name="Outbound_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Packing_Batch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Packing_Details_ID" Type="bigint" Nullable="false" />
+          <Property Name="Batch_ID" Type="bigint" Nullable="false" />
+          <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status_ID" Type="int" Nullable="false" />
+          <Property Name="Outbound_Shipment_ID" Type="bigint" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Packing_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackingName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="data1" Type="nvarchar" MaxLength="30" />
+          <Property Name="data2" Type="nvarchar" MaxLength="30" />
+          <Property Name="data3" Type="nvarchar" MaxLength="30" />
+          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
+          <Property Name="SalesOrder_Line_ID" Type="bigint" Nullable="false" />
+          <Property Name="Packing_Type_ID" Type="int" Nullable="false" />
+          <Property Name="isLock" Type="bit" Nullable="false" />
+          <Property Name="isRelease" Type="bit" Nullable="false" />
+          <Property Name="isDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Packing_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="PackingType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SAPCode" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Product_Number">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="int" Nullable="false" />
+          <Property Name="Quality_ID" Type="int" Nullable="false" />
+          <Property Name="Product_Status_ID" Type="int" Nullable="false" />
+          <Property Name="ProductNumber" Type="char" MaxLength="8" Nullable="false" />
+          <Property Name="TransferDate" Type="datetime" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="LockedReason" Type="nvarchar" MaxLength="150" />
+          <Property Name="LockedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="MES_RefID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Product_Number_Analysis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="bigint" />
+          <Property Name="AnalysisName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnalysisValue" Type="float" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="bigint" Nullable="false" />
+          <Property Name="BatchNumber" Type="int" Nullable="false" />
+          <Property Name="Mass" Type="int" Nullable="false" />
+          <Property Name="Status_ID" Type="int" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="bigint" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="int" />
+          <Property Name="Location_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
+          <Property Name="Batch_ID" Type="bigint" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="bigint" Nullable="false" />
+          <Property Name="BatchNumber" Type="int" Nullable="false" />
+          <Property Name="Mass" Type="int" Nullable="false" />
+          <Property Name="Status_ID" Type="int" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="bigint" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Location_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="int" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="isAllowed" Type="bit" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Trans">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Batch_ID" Type="bigint" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="bigint" Nullable="false" />
+          <Property Name="BatchNumber" Type="int" Nullable="false" />
+          <Property Name="Mass" Type="int" Nullable="false" />
+          <Property Name="Status_ID" Type="int" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="bigint" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product_Quality">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QualityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="QualityCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Product_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="255" />
+          <Property Name="rstatus" Type="int" />
+          <Property Name="CtrateDate" Type="smalldatetime" />
+          <Property Name="Updatedate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cleint_ID" Type="int" Nullable="false" />
+          <Property Name="OrderAction" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderActionStatus" Type="bit" Nullable="false" />
+          <Property Name="OrderNo" Type="int" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderRefNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PaymentTermCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PaymentTermDesc" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="RecordUpdated" Type="datetime" />
+          <Property Name="fileReceivedTime" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="SalesOrder_Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesOrder_ID" Type="bigint" Nullable="false" />
+          <Property Name="relationShip" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Customer_Name" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Customer_Address1" Type="nvarchar" MaxLength="80" />
+          <Property Name="Customer_Address2" Type="nvarchar" MaxLength="80" />
+          <Property Name="Customer_Address3" Type="nvarchar" MaxLength="80" />
+          <Property Name="Customer_City" Type="nvarchar" MaxLength="80" />
+          <Property Name="Customer_CountryCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="Customer_CountryName" Type="nvarchar" MaxLength="80" />
+          <Property Name="Customer_PostalCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="UpdatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SalesOrder_Line">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SalesOrder_ID" Type="bigint" Nullable="false" />
+          <Property Name="OrderLineAction" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderLineNo" Type="int" />
+          <Property Name="LineActionStatus" Type="bit" />
+          <Property Name="FOBCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="FOBName" Type="nvarchar" MaxLength="80" />
+          <Property Name="CustPONo" Type="nvarchar" MaxLength="80" />
+          <Property Name="OrderedQuantity" Type="float" Nullable="false" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="10" />
+          <Property Name="SchedShipDate" Type="datetime" />
+          <Property Name="NumberOfContainer" Type="int" />
+          <Property Name="NumberOfBundles" Type="int" />
+          <Property Name="TransportationModeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransportationModeDesc" Type="nvarchar" MaxLength="80" />
+          <Property Name="AlcanItemNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommonItemNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlloySource" Type="nvarchar" MaxLength="50" />
+          <Property Name="AlloyNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="VesselName" Type="nvarchar" MaxLength="80" />
+          <Property Name="VoyageNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScheduledSailingDate" Type="datetime" />
+          <Property Name="LoadPort" Type="nvarchar" MaxLength="50" />
+          <Property Name="DestinationPort" Type="nvarchar" MaxLength="80" />
+          <Property Name="BookingNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="ShippingLine" Type="nvarchar" MaxLength="80" />
+          <Property Name="ShipTolMax" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShipTolMin" Type="nvarchar" MaxLength="10" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="SAMY_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CtrateDate" Type="datetime" />
+          <Property Name="Updatedate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SAMY_Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProdutName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Client_Product_Plan_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="Client_Product_Plan" Type="Self.Client_Product_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Product_Plan">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Products_SAMY_Client1">
+          <End Role="SAMY_Client" Type="Self.SAMY_Client" Multiplicity="1" />
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Products">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Products_SAMY_Products1">
+          <End Role="SAMY_Products" Type="Self.SAMY_Products" Multiplicity="0..1" />
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Products">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inbound_Shipment_Inbound_Shipment_Status">
+          <End Role="Inbound_Shipment_Status" Type="Self.Inbound_Shipment_Status" Multiplicity="1" />
+          <End Role="Inbound_Shipment" Type="Self.Inbound_Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inbound_Shipment_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Inbound_Shipment">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryPosition_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="InventoryPosition" Type="Self.InventoryPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InventoryPosition">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Outbound_Shipment">
+          <End Role="Outbound_Shipment" Type="Self.Outbound_Shipment" Multiplicity="0..1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outbound_Shipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Outbound_Shipment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Outbound_Status">
+          <End Role="Outbound_Status" Type="Self.Outbound_Status" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outbound_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Packing_Details">
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packing_Details">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Packing_Details_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Details_Packing_Type">
+          <End Role="Packing_Type" Type="Self.Packing_Type" Multiplicity="1" />
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packing_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Details">
+              <PropertyRef Name="Packing_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Details_SalesOrder">
+          <End Role="SalesOrder_Line" Type="Self.SalesOrder_Line" Multiplicity="1" />
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder_Line">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Details">
+              <PropertyRef Name="SalesOrder_Line_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Analysis_Product_Number">
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="0..1" />
+          <End Role="Product_Number_Analysis" Type="Self.Product_Number_Analysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Analysis">
+              <PropertyRef Name="Product_Number_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Inbound_Shipment">
+          <End Role="Inbound_Shipment" Type="Self.Inbound_Shipment" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inbound_Shipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Inbound_Shipment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number">
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Product_Number_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number_Batch_Location">
+          <End Role="Product_Number_Batch_Location" Type="Self.Product_Number_Batch_Location" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Product_Quality">
+          <End Role="Product_Quality" Type="Self.Product_Quality" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Quality">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Quality_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Product_Status">
+          <End Role="Product_Status" Type="Self.Product_Status" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Product_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Customer_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+          <End Role="SalesOrder_Customer" Type="Self.SalesOrder_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder_Customer">
+              <PropertyRef Name="SalesOrder_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Line_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+          <End Role="SalesOrder_Line" Type="Self.SalesOrder_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder_Line">
+              <PropertyRef Name="SalesOrder_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_SAMY_Client">
+          <End Role="SAMY_Client" Type="Self.SAMY_Client" Multiplicity="1" />
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder">
+              <PropertyRef Name="Cleint_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAMYModelStoreContainer">
+          <EntitySet Name="Batch_Comments" EntityType="Self.Batch_Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Product_Plan" EntityType="Self.Client_Product_Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client_Products" EntityType="Self.Client_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departement" EntityType="Self.Departement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeMaster" EntityType="Self.EmployeeMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inbound_Shipment" EntityType="Self.Inbound_Shipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inbound_Shipment_Status" EntityType="Self.Inbound_Shipment_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InventoryPosition" EntityType="Self.InventoryPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outbound_Shipment" EntityType="Self.Outbound_Shipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Outbound_Status" EntityType="Self.Outbound_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packing_Batch" EntityType="Self.Packing_Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packing_Details" EntityType="Self.Packing_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packing_Type" EntityType="Self.Packing_Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number" EntityType="Self.Product_Number" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Analysis" EntityType="Self.Product_Number_Analysis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Batch" EntityType="Self.Product_Number_Batch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Batch_History" EntityType="Self.Product_Number_Batch_History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Batch_Location" EntityType="Self.Product_Number_Batch_Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Batch_Status" EntityType="Self.Product_Number_Batch_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Number_Batch_Trans" EntityType="Self.Product_Number_Batch_Trans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Quality" EntityType="Self.Product_Quality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Status" EntityType="Self.Product_Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrder" EntityType="Self.SalesOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrder_Customer" EntityType="Self.SalesOrder_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesOrder_Line" EntityType="Self.SalesOrder_Line" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAMY_Client" EntityType="Self.SAMY_Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAMY_Products" EntityType="Self.SAMY_Products" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Product_Plan_Client_Products" Association="Self.FK_Client_Product_Plan_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="Client_Product_Plan" EntitySet="Client_Product_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Products_SAMY_Client1" Association="Self.FK_Client_Products_SAMY_Client1">
+            <End Role="SAMY_Client" EntitySet="SAMY_Client" />
+            <End Role="Client_Products" EntitySet="Client_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Products_SAMY_Products1" Association="Self.FK_Client_Products_SAMY_Products1">
+            <End Role="SAMY_Products" EntitySet="SAMY_Products" />
+            <End Role="Client_Products" EntitySet="Client_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inbound_Shipment_Inbound_Shipment_Status" Association="Self.FK_Inbound_Shipment_Inbound_Shipment_Status">
+            <End Role="Inbound_Shipment_Status" EntitySet="Inbound_Shipment_Status" />
+            <End Role="Inbound_Shipment" EntitySet="Inbound_Shipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryPosition_Client_Products" Association="Self.FK_InventoryPosition_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="InventoryPosition" EntitySet="InventoryPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Outbound_Shipment" Association="Self.FK_Packing_Batch_Outbound_Shipment">
+            <End Role="Outbound_Shipment" EntitySet="Outbound_Shipment" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Outbound_Status" Association="Self.FK_Packing_Batch_Outbound_Status">
+            <End Role="Outbound_Status" EntitySet="Outbound_Status" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Packing_Details" Association="Self.FK_Packing_Batch_Packing_Details">
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Product_Number_Batch" Association="Self.FK_Packing_Batch_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Details_Packing_Type" Association="Self.FK_Packing_Details_Packing_Type">
+            <End Role="Packing_Type" EntitySet="Packing_Type" />
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Details_SalesOrder" Association="Self.FK_Packing_Details_SalesOrder">
+            <End Role="SalesOrder_Line" EntitySet="SalesOrder_Line" />
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Analysis_Product_Number" Association="Self.FK_Product_Number_Analysis_Product_Number">
+            <End Role="Product_Number" EntitySet="Product_Number" />
+            <End Role="Product_Number_Analysis" EntitySet="Product_Number_Analysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Batch_Comments" Association="Self.FK_Product_Number_Batch_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Batch_Comments" Association="Self.FK_Product_Number_Batch_History_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Product_Number_Batch" Association="Self.FK_Product_Number_Batch_History_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_History_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Inbound_Shipment" Association="Self.FK_Product_Number_Batch_Inbound_Shipment">
+            <End Role="Inbound_Shipment" EntitySet="Inbound_Shipment" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number" Association="Self.FK_Product_Number_Batch_Product_Number">
+            <End Role="Product_Number" EntitySet="Product_Number" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number_Batch_Location" Association="Self.FK_Product_Number_Batch_Product_Number_Batch_Location">
+            <End Role="Product_Number_Batch_Location" EntitySet="Product_Number_Batch_Location" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Batch_Comments" Association="Self.FK_Product_Number_Batch_Trans_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Product_Number_Batch" Association="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Client_Products" Association="Self.FK_Product_Number_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Product_Quality" Association="Self.FK_Product_Number_Product_Quality">
+            <End Role="Product_Quality" EntitySet="Product_Quality" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Product_Status" Association="Self.FK_Product_Number_Product_Status">
+            <End Role="Product_Status" EntitySet="Product_Status" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Customer_SalesOrder" Association="Self.FK_SalesOrder_Customer_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SalesOrder_Customer" EntitySet="SalesOrder_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Line_SalesOrder" Association="Self.FK_SalesOrder_Line_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SalesOrder_Line" EntitySet="SalesOrder_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_SAMY_Client" Association="Self.FK_SalesOrder_SAMY_Client">
+            <End Role="SAMY_Client" EntitySet="SAMY_Client" />
+            <End Role="SalesOrder" EntitySet="SalesOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAMYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Batch_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Batch_Comments" FromRole="Batch_Comments" ToRole="Product_Number_Batch" />
+          <NavigationProperty Name="Product_Number_Batch_History" Relationship="Self.FK_Product_Number_Batch_History_Batch_Comments" FromRole="Batch_Comments" ToRole="Product_Number_Batch_History" />
+          <NavigationProperty Name="Product_Number_Batch_Trans" Relationship="Self.FK_Product_Number_Batch_Trans_Batch_Comments" FromRole="Batch_Comments" ToRole="Product_Number_Batch_Trans" />
+        </EntityType>
+        <EntityType Name="Client_Product_Plan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="MassPlan" Type="Int32" Nullable="false" />
+          <Property Name="PlannedMonth" Type="Int32" Nullable="false" />
+          <Property Name="PlannedYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client_Products" Relationship="Self.FK_Client_Product_Plan_Client_Products" FromRole="Client_Product_Plan" ToRole="Client_Products" />
+        </EntityType>
+        <EntityType Name="Client_Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Plant" Type="Int32" />
+          <NavigationProperty Name="Client_Product_Plan" Relationship="Self.FK_Client_Product_Plan_Client_Products" FromRole="Client_Products" ToRole="Client_Product_Plan" />
+          <NavigationProperty Name="SAMY_Client" Relationship="Self.FK_Client_Products_SAMY_Client1" FromRole="Client_Products" ToRole="SAMY_Client" />
+          <NavigationProperty Name="SAMY_Products" Relationship="Self.FK_Client_Products_SAMY_Products1" FromRole="Client_Products" ToRole="SAMY_Products" />
+          <NavigationProperty Name="InventoryPositions" Relationship="Self.FK_InventoryPosition_Client_Products" FromRole="Client_Products" ToRole="InventoryPosition" />
+          <NavigationProperty Name="Product_Number" Relationship="Self.FK_Product_Number_Client_Products" FromRole="Client_Products" ToRole="Product_Number" />
+        </EntityType>
+        <EntityType Name="Departement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Departement1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dstatus" Type="Int32" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="0" />
+          <Property Name="Updatedate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="EmployeeMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="deptid" Type="Int32" />
+          <Property Name="roleid" Type="Int32" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="0" />
+          <Property Name="Updatedate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Inbound_Shipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShippingNumber" Type="Int32" Nullable="false" />
+          <Property Name="ShipmentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcknowledgeDate" Type="DateTime" Precision="3" />
+          <Property Name="isLock" Type="Boolean" Nullable="false" />
+          <Property Name="LockedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MES_RefID" Type="Int64" />
+          <NavigationProperty Name="Inbound_Shipment_Status" Relationship="Self.FK_Inbound_Shipment_Inbound_Shipment_Status" FromRole="Inbound_Shipment" ToRole="Inbound_Shipment_Status" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Inbound_Shipment" FromRole="Inbound_Shipment" ToRole="Product_Number_Batch" />
+        </EntityType>
+        <EntityType Name="Inbound_Shipment_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Inbound_Shipment" Relationship="Self.FK_Inbound_Shipment_Inbound_Shipment_Status" FromRole="Inbound_Shipment_Status" ToRole="Inbound_Shipment" />
+        </EntityType>
+        <EntityType Name="InventoryPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="ReportPeriod" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Quality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OpenMetalPad" Type="Int32" />
+          <Property Name="OpenIntransit" Type="Int32" />
+          <Property Name="OpenPrebill" Type="Int32" />
+          <Property Name="TransferPerProduct" Type="Int32" />
+          <Property Name="MonthlyTransfer" Type="Int32" />
+          <Property Name="DailyTransfer" Type="Int32" />
+          <Property Name="DailyRejected" Type="Int32" />
+          <Property Name="MonthlyIntransit" Type="Int32" />
+          <Property Name="Daily_Sohar_Container" Type="Int32" />
+          <Property Name="Daily_Sohar_Breakbulk" Type="Int32" />
+          <Property Name="OtherPort_Container" Type="Int32" />
+          <Property Name="OtherPort_Breakbulk" Type="Int32" />
+          <Property Name="RegionalIntransit" Type="Int32" />
+          <Property Name="TotalIntransit" Type="Int32" />
+          <Property Name="DailyStockCorrection" Type="Int32" />
+          <Property Name="MonthlyStockCorrection" Type="Int32" />
+          <Property Name="DailyShipped" Type="Int32" />
+          <Property Name="TotalShipped" Type="Int32" />
+          <Property Name="TotalShippedRgional" Type="Int32" />
+          <Property Name="MetalPadEnd" Type="Int32" />
+          <Property Name="TotalInventory" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="day" Type="Int32" />
+          <NavigationProperty Name="Client_Products" Relationship="Self.FK_InventoryPosition_Client_Products" FromRole="InventoryPosition" ToRole="Client_Products" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lstatus" Type="Int32" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="0" />
+          <Property Name="Updatedate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="DateTime" Precision="0" />
+          <Property Name="logout" Type="DateTime" Precision="0" />
+          <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="locationid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="empid" Type="Int32" />
+          <Property Name="deptid" Type="Int32" />
+          <Property Name="lstatus" Type="Int32" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="0" />
+          <Property Name="Updatedate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Outbound_Shipment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SalesOrderNumber" Type="Int32" />
+          <Property Name="LineItemNumber" Type="Int32" />
+          <Property Name="Plant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NetWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UoM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GrossWeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pieces" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Bundles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Containers" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColourMarkings" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPMSalesOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OPMSalesOrderLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sendStatus" Type="Boolean" />
+          <Property Name="sendTime" Type="DateTime" Precision="3" />
+          <Property Name="ChangedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChanedDate" Type="DateTime" Precision="3" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="Shipment_Status" Type="Int32" />
+          <Property Name="ShipmentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <NavigationProperty Name="Packing_Batch" Relationship="Self.FK_Packing_Batch_Outbound_Shipment" FromRole="Outbound_Shipment" ToRole="Packing_Batch" />
+        </EntityType>
+        <EntityType Name="Outbound_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Packing_Batch" Relationship="Self.FK_Packing_Batch_Outbound_Status" FromRole="Outbound_Status" ToRole="Packing_Batch" />
+        </EntityType>
+        <EntityType Name="Packing_Batch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Packing_Details_ID" Type="Int64" Nullable="false" />
+          <Property Name="Batch_ID" Type="Int64" Nullable="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Outbound_Shipment_ID" Type="Int64" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="Outbound_Shipment" Relationship="Self.FK_Packing_Batch_Outbound_Shipment" FromRole="Packing_Batch" ToRole="Outbound_Shipment" />
+          <NavigationProperty Name="Outbound_Status" Relationship="Self.FK_Packing_Batch_Outbound_Status" FromRole="Packing_Batch" ToRole="Outbound_Status" />
+          <NavigationProperty Name="Packing_Details" Relationship="Self.FK_Packing_Batch_Packing_Details" FromRole="Packing_Batch" ToRole="Packing_Details" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Packing_Batch_Product_Number_Batch" FromRole="Packing_Batch" ToRole="Product_Number_Batch" />
+        </EntityType>
+        <EntityType Name="Packing_Details">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackingName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="data2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="data3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SalesOrder_Line_ID" Type="Int64" Nullable="false" />
+          <Property Name="Packing_Type_ID" Type="Int32" Nullable="false" />
+          <Property Name="isLock" Type="Boolean" Nullable="false" />
+          <Property Name="isRelease" Type="Boolean" Nullable="false" />
+          <Property Name="isDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Packing_Batch" Relationship="Self.FK_Packing_Batch_Packing_Details" FromRole="Packing_Details" ToRole="Packing_Batch" />
+          <NavigationProperty Name="Packing_Type" Relationship="Self.FK_Packing_Details_Packing_Type" FromRole="Packing_Details" ToRole="Packing_Type" />
+          <NavigationProperty Name="SalesOrder_Line" Relationship="Self.FK_Packing_Details_SalesOrder" FromRole="Packing_Details" ToRole="SalesOrder_Line" />
+        </EntityType>
+        <EntityType Name="Packing_Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="PackingType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAPCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Packing_Details" Relationship="Self.FK_Packing_Details_Packing_Type" FromRole="Packing_Type" ToRole="Packing_Details" />
+        </EntityType>
+        <EntityType Name="Product_Number">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Client_Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="Quality_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductNumber" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TransferDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="LockedReason" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="LockedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MES_RefID" Type="Int64" />
+          <NavigationProperty Name="Client_Products" Relationship="Self.FK_Product_Number_Client_Products" FromRole="Product_Number" ToRole="Client_Products" />
+          <NavigationProperty Name="Product_Number_Analysis" Relationship="Self.FK_Product_Number_Analysis_Product_Number" FromRole="Product_Number" ToRole="Product_Number_Analysis" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Product_Number" FromRole="Product_Number" ToRole="Product_Number_Batch" />
+          <NavigationProperty Name="Product_Quality" Relationship="Self.FK_Product_Number_Product_Quality" FromRole="Product_Number" ToRole="Product_Quality" />
+          <NavigationProperty Name="Product_Status" Relationship="Self.FK_Product_Number_Product_Status" FromRole="Product_Number" ToRole="Product_Status" />
+        </EntityType>
+        <EntityType Name="Product_Number_Analysis">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Number_ID" Type="Int64" />
+          <Property Name="AnalysisName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnalysisValue" Type="Double" />
+          <NavigationProperty Name="Product_Number" Relationship="Self.FK_Product_Number_Analysis_Product_Number" FromRole="Product_Number_Analysis" ToRole="Product_Number" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Number_ID" Type="Int64" Nullable="false" />
+          <Property Name="BatchNumber" Type="Int32" Nullable="false" />
+          <Property Name="Mass" Type="Int32" Nullable="false" />
+          <Property Name="Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="Int64" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="Int32" />
+          <Property Name="Location_ID" Type="Int32" />
+          <NavigationProperty Name="Batch_Comments" Relationship="Self.FK_Product_Number_Batch_Batch_Comments" FromRole="Product_Number_Batch" ToRole="Batch_Comments" />
+          <NavigationProperty Name="Inbound_Shipment" Relationship="Self.FK_Product_Number_Batch_Inbound_Shipment" FromRole="Product_Number_Batch" ToRole="Inbound_Shipment" />
+          <NavigationProperty Name="Packing_Batch" Relationship="Self.FK_Packing_Batch_Product_Number_Batch" FromRole="Product_Number_Batch" ToRole="Packing_Batch" />
+          <NavigationProperty Name="Product_Number" Relationship="Self.FK_Product_Number_Batch_Product_Number" FromRole="Product_Number_Batch" ToRole="Product_Number" />
+          <NavigationProperty Name="Product_Number_Batch_History" Relationship="Self.FK_Product_Number_Batch_History_Product_Number_Batch" FromRole="Product_Number_Batch" ToRole="Product_Number_Batch_History" />
+          <NavigationProperty Name="Product_Number_Batch_Location" Relationship="Self.FK_Product_Number_Batch_Product_Number_Batch_Location" FromRole="Product_Number_Batch" ToRole="Product_Number_Batch_Location" />
+          <NavigationProperty Name="Product_Number_Batch_Status" Relationship="Self.FK_Product_Number_Batch_Product_Number_Batch_Status" FromRole="Product_Number_Batch" ToRole="Product_Number_Batch_Status" />
+          <NavigationProperty Name="Product_Number_Batch_Trans" Relationship="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch" FromRole="Product_Number_Batch" ToRole="Product_Number_Batch_Trans" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="Batch_ID" Type="Int64" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="Int64" Nullable="false" />
+          <Property Name="BatchNumber" Type="Int32" Nullable="false" />
+          <Property Name="Mass" Type="Int32" Nullable="false" />
+          <Property Name="Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="Int64" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="Int32" />
+          <NavigationProperty Name="Batch_Comments" Relationship="Self.FK_Product_Number_Batch_History_Batch_Comments" FromRole="Product_Number_Batch_History" ToRole="Batch_Comments" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_History_Product_Number_Batch" FromRole="Product_Number_Batch_History" ToRole="Product_Number_Batch" />
+          <NavigationProperty Name="Product_Number_Batch_Status" Relationship="Self.FK_Product_Number_Batch_History_Product_Number_Batch_Status" FromRole="Product_Number_Batch_History" ToRole="Product_Number_Batch_Status" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Location">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Location_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Client_Product_ID" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="isAllowed" Type="Boolean" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Product_Number_Batch_Location" FromRole="Product_Number_Batch_Location" ToRole="Product_Number_Batch" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Product_Number_Batch_Status" FromRole="Product_Number_Batch_Status" ToRole="Product_Number_Batch" />
+          <NavigationProperty Name="Product_Number_Batch_History" Relationship="Self.FK_Product_Number_Batch_History_Product_Number_Batch_Status" FromRole="Product_Number_Batch_Status" ToRole="Product_Number_Batch_History" />
+          <NavigationProperty Name="Product_Number_Batch_Trans" Relationship="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch_Status" FromRole="Product_Number_Batch_Status" ToRole="Product_Number_Batch_Trans" />
+        </EntityType>
+        <EntityType Name="Product_Number_Batch_Trans">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Batch_ID" Type="Int64" Nullable="false" />
+          <Property Name="Product_Number_ID" Type="Int64" Nullable="false" />
+          <Property Name="BatchNumber" Type="Int32" Nullable="false" />
+          <Property Name="Mass" Type="Int32" Nullable="false" />
+          <Property Name="Status_ID" Type="Int32" Nullable="false" />
+          <Property Name="Inbound_Shipment_ID" Type="Int64" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Batch_Comment_ID" Type="Int32" />
+          <NavigationProperty Name="Batch_Comments" Relationship="Self.FK_Product_Number_Batch_Trans_Batch_Comments" FromRole="Product_Number_Batch_Trans" ToRole="Batch_Comments" />
+          <NavigationProperty Name="Product_Number_Batch" Relationship="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch" FromRole="Product_Number_Batch_Trans" ToRole="Product_Number_Batch" />
+          <NavigationProperty Name="Product_Number_Batch_Status" Relationship="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch_Status" FromRole="Product_Number_Batch_Trans" ToRole="Product_Number_Batch_Status" />
+        </EntityType>
+        <EntityType Name="Product_Quality">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QualityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QualityCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product_Number" Relationship="Self.FK_Product_Number_Product_Quality" FromRole="Product_Quality" ToRole="Product_Number" />
+        </EntityType>
+        <EntityType Name="Product_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product_Number" Relationship="Self.FK_Product_Number_Product_Status" FromRole="Product_Status" ToRole="Product_Number" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rstatus" Type="Int32" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="0" />
+          <Property Name="Updatedate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="SalesOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cleint_ID" Type="Int32" Nullable="false" />
+          <Property Name="OrderAction" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderActionStatus" Type="Boolean" Nullable="false" />
+          <Property Name="OrderNo" Type="Int32" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderRefNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentTermCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentTermDesc" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="RecordUpdated" Type="DateTime" Precision="3" />
+          <Property Name="fileReceivedTime" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderStatus" Type="Int32" />
+          <NavigationProperty Name="SalesOrder_Customer" Relationship="Self.FK_SalesOrder_Customer_SalesOrder" FromRole="SalesOrder" ToRole="SalesOrder_Customer" />
+          <NavigationProperty Name="SalesOrder_Line" Relationship="Self.FK_SalesOrder_Line_SalesOrder" FromRole="SalesOrder" ToRole="SalesOrder_Line" />
+          <NavigationProperty Name="SAMY_Client" Relationship="Self.FK_SalesOrder_SAMY_Client" FromRole="SalesOrder" ToRole="SAMY_Client" />
+        </EntityType>
+        <EntityType Name="SalesOrder_Customer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalesOrder_ID" Type="Int64" Nullable="false" />
+          <Property Name="relationShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Customer_Address1" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Address2" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_Address3" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_City" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_CountryCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_CountryName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Customer_PostalCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SalesOrder" Relationship="Self.FK_SalesOrder_Customer_SalesOrder" FromRole="SalesOrder_Customer" ToRole="SalesOrder" />
+        </EntityType>
+        <EntityType Name="SalesOrder_Line">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SalesOrder_ID" Type="Int64" Nullable="false" />
+          <Property Name="OrderLineAction" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderLineNo" Type="Int32" />
+          <Property Name="LineActionStatus" Type="Boolean" />
+          <Property Name="FOBCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="FOBName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CustPONo" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="OrderedQuantity" Type="Double" Nullable="false" />
+          <Property Name="UnitOfMeasure" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SchedShipDate" Type="DateTime" Precision="3" />
+          <Property Name="NumberOfContainer" Type="Int32" />
+          <Property Name="NumberOfBundles" Type="Int32" />
+          <Property Name="TransportationModeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransportationModeDesc" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="AlcanItemNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommonItemNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AlloySource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AlloyNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VesselName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="VoyageNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduledSailingDate" Type="DateTime" Precision="3" />
+          <Property Name="LoadPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationPort" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="BookingNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingLine" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ShipTolMax" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShipTolMin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Packing_Details" Relationship="Self.FK_Packing_Details_SalesOrder" FromRole="SalesOrder_Line" ToRole="Packing_Details" />
+          <NavigationProperty Name="SalesOrder" Relationship="Self.FK_SalesOrder_Line_SalesOrder" FromRole="SalesOrder_Line" ToRole="SalesOrder" />
+        </EntityType>
+        <EntityType Name="SAMY_Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClientLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CtrateDate" Type="DateTime" Precision="3" />
+          <Property Name="Updatedate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client_Products" Relationship="Self.FK_Client_Products_SAMY_Client1" FromRole="SAMY_Client" ToRole="Client_Products" />
+          <NavigationProperty Name="SalesOrders" Relationship="Self.FK_SalesOrder_SAMY_Client" FromRole="SAMY_Client" ToRole="SalesOrder" />
+        </EntityType>
+        <EntityType Name="SAMY_Products">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProdutName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Client_Products" Relationship="Self.FK_Client_Products_SAMY_Products1" FromRole="SAMY_Products" ToRole="Client_Products" />
+        </EntityType>
+        <Association Name="FK_Product_Number_Batch_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Batch_Comments">
+          <End Role="Batch_Comments" Type="Self.Batch_Comments" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batch_Comments">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Batch_Comment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Product_Plan_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="Client_Product_Plan" Type="Self.Client_Product_Plan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Product_Plan">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Products_SAMY_Client1">
+          <End Role="SAMY_Client" Type="Self.SAMY_Client" Multiplicity="1" />
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Products">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Products_SAMY_Products1">
+          <End Role="SAMY_Products" Type="Self.SAMY_Products" Multiplicity="0..1" />
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Client_Products">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InventoryPosition_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="InventoryPosition" Type="Self.InventoryPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InventoryPosition">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Client_Products">
+          <End Role="Client_Products" Type="Self.Client_Products" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client_Products">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Client_Product_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inbound_Shipment_Inbound_Shipment_Status">
+          <End Role="Inbound_Shipment_Status" Type="Self.Inbound_Shipment_Status" Multiplicity="1" />
+          <End Role="Inbound_Shipment" Type="Self.Inbound_Shipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inbound_Shipment_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Inbound_Shipment">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Inbound_Shipment">
+          <End Role="Inbound_Shipment" Type="Self.Inbound_Shipment" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inbound_Shipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Inbound_Shipment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Outbound_Shipment">
+          <End Role="Outbound_Shipment" Type="Self.Outbound_Shipment" Multiplicity="0..1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outbound_Shipment">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Outbound_Shipment_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Outbound_Status">
+          <End Role="Outbound_Status" Type="Self.Outbound_Status" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Outbound_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Packing_Details">
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packing_Details">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Packing_Details_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Batch_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Packing_Batch" Type="Self.Packing_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Batch">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Details_Packing_Type">
+          <End Role="Packing_Type" Type="Self.Packing_Type" Multiplicity="1" />
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packing_Type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Details">
+              <PropertyRef Name="Packing_Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Packing_Details_SalesOrder">
+          <End Role="SalesOrder_Line" Type="Self.SalesOrder_Line" Multiplicity="1" />
+          <End Role="Packing_Details" Type="Self.Packing_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder_Line">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Packing_Details">
+              <PropertyRef Name="SalesOrder_Line_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Analysis_Product_Number">
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="0..1" />
+          <End Role="Product_Number_Analysis" Type="Self.Product_Number_Analysis" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Analysis">
+              <PropertyRef Name="Product_Number_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number">
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Product_Number_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Product_Quality">
+          <End Role="Product_Quality" Type="Self.Product_Quality" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Quality">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Quality_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Product_Status">
+          <End Role="Product_Status" Type="Self.Product_Status" Multiplicity="1" />
+          <End Role="Product_Number" Type="Self.Product_Number" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number">
+              <PropertyRef Name="Product_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number_Batch_Location">
+          <End Role="Product_Number_Batch_Location" Type="Self.Product_Number_Batch_Location" Multiplicity="0..1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Location">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Location_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Product_Number_Batch">
+          <End Role="Product_Number_Batch" Type="Self.Product_Number_Batch" Multiplicity="1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Batch_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_History_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch_History" Type="Self.Product_Number_Batch_History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_History">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Number_Batch_Trans_Product_Number_Batch_Status">
+          <End Role="Product_Number_Batch_Status" Type="Self.Product_Number_Batch_Status" Multiplicity="1" />
+          <End Role="Product_Number_Batch_Trans" Type="Self.Product_Number_Batch_Trans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product_Number_Batch_Status">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product_Number_Batch_Trans">
+              <PropertyRef Name="Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Customer_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+          <End Role="SalesOrder_Customer" Type="Self.SalesOrder_Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder_Customer">
+              <PropertyRef Name="SalesOrder_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_Line_SalesOrder">
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+          <End Role="SalesOrder_Line" Type="Self.SalesOrder_Line" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder_Line">
+              <PropertyRef Name="SalesOrder_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalesOrder_SAMY_Client">
+          <End Role="SAMY_Client" Type="Self.SAMY_Client" Multiplicity="1" />
+          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SAMY_Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SalesOrder">
+              <PropertyRef Name="Cleint_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SAMYEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Batch_Comments" EntityType="Self.Batch_Comments" />
+          <EntitySet Name="Client_Product_Plan" EntityType="Self.Client_Product_Plan" />
+          <EntitySet Name="Client_Products" EntityType="Self.Client_Products" />
+          <EntitySet Name="Departements" EntityType="Self.Departement" />
+          <EntitySet Name="EmployeeMasters" EntityType="Self.EmployeeMaster" />
+          <EntitySet Name="Inbound_Shipment" EntityType="Self.Inbound_Shipment" />
+          <EntitySet Name="Inbound_Shipment_Status" EntityType="Self.Inbound_Shipment_Status" />
+          <EntitySet Name="InventoryPositions" EntityType="Self.InventoryPosition" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Outbound_Shipment" EntityType="Self.Outbound_Shipment" />
+          <EntitySet Name="Outbound_Status" EntityType="Self.Outbound_Status" />
+          <EntitySet Name="Packing_Batch" EntityType="Self.Packing_Batch" />
+          <EntitySet Name="Packing_Details" EntityType="Self.Packing_Details" />
+          <EntitySet Name="Packing_Type" EntityType="Self.Packing_Type" />
+          <EntitySet Name="Product_Number" EntityType="Self.Product_Number" />
+          <EntitySet Name="Product_Number_Analysis" EntityType="Self.Product_Number_Analysis" />
+          <EntitySet Name="Product_Number_Batch" EntityType="Self.Product_Number_Batch" />
+          <EntitySet Name="Product_Number_Batch_History" EntityType="Self.Product_Number_Batch_History" />
+          <EntitySet Name="Product_Number_Batch_Location" EntityType="Self.Product_Number_Batch_Location" />
+          <EntitySet Name="Product_Number_Batch_Status" EntityType="Self.Product_Number_Batch_Status" />
+          <EntitySet Name="Product_Number_Batch_Trans" EntityType="Self.Product_Number_Batch_Trans" />
+          <EntitySet Name="Product_Quality" EntityType="Self.Product_Quality" />
+          <EntitySet Name="Product_Status" EntityType="Self.Product_Status" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SalesOrders" EntityType="Self.SalesOrder" />
+          <EntitySet Name="SalesOrder_Customer" EntityType="Self.SalesOrder_Customer" />
+          <EntitySet Name="SalesOrder_Line" EntityType="Self.SalesOrder_Line" />
+          <EntitySet Name="SAMY_Client" EntityType="Self.SAMY_Client" />
+          <EntitySet Name="SAMY_Products" EntityType="Self.SAMY_Products" />
+          <AssociationSet Name="FK_Product_Number_Batch_Batch_Comments" Association="Self.FK_Product_Number_Batch_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Batch_Comments" Association="Self.FK_Product_Number_Batch_History_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Batch_Comments" Association="Self.FK_Product_Number_Batch_Trans_Batch_Comments">
+            <End Role="Batch_Comments" EntitySet="Batch_Comments" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Product_Plan_Client_Products" Association="Self.FK_Client_Product_Plan_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="Client_Product_Plan" EntitySet="Client_Product_Plan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Products_SAMY_Client1" Association="Self.FK_Client_Products_SAMY_Client1">
+            <End Role="SAMY_Client" EntitySet="SAMY_Client" />
+            <End Role="Client_Products" EntitySet="Client_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Products_SAMY_Products1" Association="Self.FK_Client_Products_SAMY_Products1">
+            <End Role="SAMY_Products" EntitySet="SAMY_Products" />
+            <End Role="Client_Products" EntitySet="Client_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InventoryPosition_Client_Products" Association="Self.FK_InventoryPosition_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="InventoryPosition" EntitySet="InventoryPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Client_Products" Association="Self.FK_Product_Number_Client_Products">
+            <End Role="Client_Products" EntitySet="Client_Products" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inbound_Shipment_Inbound_Shipment_Status" Association="Self.FK_Inbound_Shipment_Inbound_Shipment_Status">
+            <End Role="Inbound_Shipment_Status" EntitySet="Inbound_Shipment_Status" />
+            <End Role="Inbound_Shipment" EntitySet="Inbound_Shipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Inbound_Shipment" Association="Self.FK_Product_Number_Batch_Inbound_Shipment">
+            <End Role="Inbound_Shipment" EntitySet="Inbound_Shipment" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Outbound_Shipment" Association="Self.FK_Packing_Batch_Outbound_Shipment">
+            <End Role="Outbound_Shipment" EntitySet="Outbound_Shipment" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Outbound_Status" Association="Self.FK_Packing_Batch_Outbound_Status">
+            <End Role="Outbound_Status" EntitySet="Outbound_Status" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Packing_Details" Association="Self.FK_Packing_Batch_Packing_Details">
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Batch_Product_Number_Batch" Association="Self.FK_Packing_Batch_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Packing_Batch" EntitySet="Packing_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Details_Packing_Type" Association="Self.FK_Packing_Details_Packing_Type">
+            <End Role="Packing_Type" EntitySet="Packing_Type" />
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Packing_Details_SalesOrder" Association="Self.FK_Packing_Details_SalesOrder">
+            <End Role="SalesOrder_Line" EntitySet="SalesOrder_Line" />
+            <End Role="Packing_Details" EntitySet="Packing_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Analysis_Product_Number" Association="Self.FK_Product_Number_Analysis_Product_Number">
+            <End Role="Product_Number" EntitySet="Product_Number" />
+            <End Role="Product_Number_Analysis" EntitySet="Product_Number_Analysis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number" Association="Self.FK_Product_Number_Batch_Product_Number">
+            <End Role="Product_Number" EntitySet="Product_Number" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Product_Quality" Association="Self.FK_Product_Number_Product_Quality">
+            <End Role="Product_Quality" EntitySet="Product_Quality" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Product_Status" Association="Self.FK_Product_Number_Product_Status">
+            <End Role="Product_Status" EntitySet="Product_Status" />
+            <End Role="Product_Number" EntitySet="Product_Number" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Product_Number_Batch" Association="Self.FK_Product_Number_Batch_History_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number_Batch_Location" Association="Self.FK_Product_Number_Batch_Product_Number_Batch_Location">
+            <End Role="Product_Number_Batch_Location" EntitySet="Product_Number_Batch_Location" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Product_Number_Batch" Association="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch">
+            <End Role="Product_Number_Batch" EntitySet="Product_Number_Batch" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_History_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_History_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch_History" EntitySet="Product_Number_Batch_History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Number_Batch_Trans_Product_Number_Batch_Status" Association="Self.FK_Product_Number_Batch_Trans_Product_Number_Batch_Status">
+            <End Role="Product_Number_Batch_Status" EntitySet="Product_Number_Batch_Status" />
+            <End Role="Product_Number_Batch_Trans" EntitySet="Product_Number_Batch_Trans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Customer_SalesOrder" Association="Self.FK_SalesOrder_Customer_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SalesOrder_Customer" EntitySet="SalesOrder_Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_Line_SalesOrder" Association="Self.FK_SalesOrder_Line_SalesOrder">
+            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SalesOrder_Line" EntitySet="SalesOrder_Line" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalesOrder_SAMY_Client" Association="Self.FK_SalesOrder_SAMY_Client">
+            <End Role="SAMY_Client" EntitySet="SAMY_Client" />
+            <End Role="SalesOrder" EntitySet="SalesOrders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAMYModelStoreContainer" CdmEntityContainer="SAMYEntities">
+          <EntitySetMapping Name="Batch_Comments">
+            <EntityTypeMapping TypeName="SAMYModel.Batch_Comments">
+              <MappingFragment StoreEntitySet="Batch_Comments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Product_Plan">
+            <EntityTypeMapping TypeName="SAMYModel.Client_Product_Plan">
+              <MappingFragment StoreEntitySet="Client_Product_Plan">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Client_Product_ID" ColumnName="Client_Product_ID" />
+                <ScalarProperty Name="MassPlan" ColumnName="MassPlan" />
+                <ScalarProperty Name="PlannedMonth" ColumnName="PlannedMonth" />
+                <ScalarProperty Name="PlannedYear" ColumnName="PlannedYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Products">
+            <EntityTypeMapping TypeName="SAMYModel.Client_Products">
+              <MappingFragment StoreEntitySet="Client_Products">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departements">
+            <EntityTypeMapping TypeName="SAMYModel.Departement">
+              <MappingFragment StoreEntitySet="Departement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Departement1" ColumnName="Departement" />
+                <ScalarProperty Name="dstatus" ColumnName="dstatus" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeMasters">
+            <EntityTypeMapping TypeName="SAMYModel.EmployeeMaster">
+              <MappingFragment StoreEntitySet="EmployeeMaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="deptid" ColumnName="deptid" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inbound_Shipment">
+            <EntityTypeMapping TypeName="SAMYModel.Inbound_Shipment">
+              <MappingFragment StoreEntitySet="Inbound_Shipment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShippingNumber" ColumnName="ShippingNumber" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+                <ScalarProperty Name="AcknowledgeDate" ColumnName="AcknowledgeDate" />
+                <ScalarProperty Name="isLock" ColumnName="isLock" />
+                <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+                <ScalarProperty Name="MES_RefID" ColumnName="MES_RefID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inbound_Shipment_Status">
+            <EntityTypeMapping TypeName="SAMYModel.Inbound_Shipment_Status">
+              <MappingFragment StoreEntitySet="Inbound_Shipment_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InventoryPositions">
+            <EntityTypeMapping TypeName="SAMYModel.InventoryPosition">
+              <MappingFragment StoreEntitySet="InventoryPosition">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Client_Product_ID" ColumnName="Client_Product_ID" />
+                <ScalarProperty Name="ReportPeriod" ColumnName="ReportPeriod" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="OpenMetalPad" ColumnName="OpenMetalPad" />
+                <ScalarProperty Name="OpenIntransit" ColumnName="OpenIntransit" />
+                <ScalarProperty Name="OpenPrebill" ColumnName="OpenPrebill" />
+                <ScalarProperty Name="TransferPerProduct" ColumnName="TransferPerProduct" />
+                <ScalarProperty Name="MonthlyTransfer" ColumnName="MonthlyTransfer" />
+                <ScalarProperty Name="DailyTransfer" ColumnName="DailyTransfer" />
+                <ScalarProperty Name="DailyRejected" ColumnName="DailyRejected" />
+                <ScalarProperty Name="MonthlyIntransit" ColumnName="MonthlyIntransit" />
+                <ScalarProperty Name="Daily_Sohar_Container" ColumnName="Daily_Sohar_Container" />
+                <ScalarProperty Name="Daily_Sohar_Breakbulk" ColumnName="Daily_Sohar_Breakbulk" />
+                <ScalarProperty Name="OtherPort_Container" ColumnName="OtherPort_Container" />
+                <ScalarProperty Name="OtherPort_Breakbulk" ColumnName="OtherPort_Breakbulk" />
+                <ScalarProperty Name="RegionalIntransit" ColumnName="RegionalIntransit" />
+                <ScalarProperty Name="TotalIntransit" ColumnName="TotalIntransit" />
+                <ScalarProperty Name="DailyStockCorrection" ColumnName="DailyStockCorrection" />
+                <ScalarProperty Name="MonthlyStockCorrection" ColumnName="MonthlyStockCorrection" />
+                <ScalarProperty Name="DailyShipped" ColumnName="DailyShipped" />
+                <ScalarProperty Name="TotalShipped" ColumnName="TotalShipped" />
+                <ScalarProperty Name="TotalShippedRgional" ColumnName="TotalShippedRgional" />
+                <ScalarProperty Name="MetalPadEnd" ColumnName="MetalPadEnd" />
+                <ScalarProperty Name="TotalInventory" ColumnName="TotalInventory" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="day" ColumnName="day" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="SAMYModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Location1" ColumnName="Location" />
+                <ScalarProperty Name="lstatus" ColumnName="lstatus" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logs">
+            <EntityTypeMapping TypeName="SAMYModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="logout" ColumnName="logout" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="SAMYModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="empid" ColumnName="empid" />
+                <ScalarProperty Name="deptid" ColumnName="deptid" />
+                <ScalarProperty Name="lstatus" ColumnName="lstatus" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outbound_Shipment">
+            <EntityTypeMapping TypeName="SAMYModel.Outbound_Shipment">
+              <MappingFragment StoreEntitySet="Outbound_Shipment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+                <ScalarProperty Name="LineItemNumber" ColumnName="LineItemNumber" />
+                <ScalarProperty Name="Plant" ColumnName="Plant" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="NetWeight" ColumnName="NetWeight" />
+                <ScalarProperty Name="UoM" ColumnName="UoM" />
+                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="Bundles" ColumnName="Bundles" />
+                <ScalarProperty Name="Containers" ColumnName="Containers" />
+                <ScalarProperty Name="ColourMarkings" ColumnName="ColourMarkings" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OPMSalesOrderNumber" ColumnName="OPMSalesOrderNumber" />
+                <ScalarProperty Name="OPMSalesOrderLine" ColumnName="OPMSalesOrderLine" />
+                <ScalarProperty Name="sendStatus" ColumnName="sendStatus" />
+                <ScalarProperty Name="sendTime" ColumnName="sendTime" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChanedDate" ColumnName="ChanedDate" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="Shipment_Status" ColumnName="Shipment_Status" />
+                <ScalarProperty Name="ShipmentType" ColumnName="ShipmentType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Outbound_Status">
+            <EntityTypeMapping TypeName="SAMYModel.Outbound_Status">
+              <MappingFragment StoreEntitySet="Outbound_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packing_Batch">
+            <EntityTypeMapping TypeName="SAMYModel.Packing_Batch">
+              <MappingFragment StoreEntitySet="Packing_Batch">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Packing_Details_ID" ColumnName="Packing_Details_ID" />
+                <ScalarProperty Name="Batch_ID" ColumnName="Batch_ID" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Outbound_Shipment_ID" ColumnName="Outbound_Shipment_ID" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packing_Details">
+            <EntityTypeMapping TypeName="SAMYModel.Packing_Details">
+              <MappingFragment StoreEntitySet="Packing_Details">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PackingName" ColumnName="PackingName" />
+                <ScalarProperty Name="data1" ColumnName="data1" />
+                <ScalarProperty Name="data2" ColumnName="data2" />
+                <ScalarProperty Name="data3" ColumnName="data3" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="SalesOrder_Line_ID" ColumnName="SalesOrder_Line_ID" />
+                <ScalarProperty Name="Packing_Type_ID" ColumnName="Packing_Type_ID" />
+                <ScalarProperty Name="isLock" ColumnName="isLock" />
+                <ScalarProperty Name="isRelease" ColumnName="isRelease" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packing_Type">
+            <EntityTypeMapping TypeName="SAMYModel.Packing_Type">
+              <MappingFragment StoreEntitySet="Packing_Type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PackingType" ColumnName="PackingType" />
+                <ScalarProperty Name="SAPCode" ColumnName="SAPCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number">
+              <MappingFragment StoreEntitySet="Product_Number">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Client_Product_ID" ColumnName="Client_Product_ID" />
+                <ScalarProperty Name="Quality_ID" ColumnName="Quality_ID" />
+                <ScalarProperty Name="Product_Status_ID" ColumnName="Product_Status_ID" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="TransferDate" ColumnName="TransferDate" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LockedReason" ColumnName="LockedReason" />
+                <ScalarProperty Name="LockedBy" ColumnName="LockedBy" />
+                <ScalarProperty Name="MES_RefID" ColumnName="MES_RefID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Analysis">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Analysis">
+              <MappingFragment StoreEntitySet="Product_Number_Analysis">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Product_Number_ID" ColumnName="Product_Number_ID" />
+                <ScalarProperty Name="AnalysisName" ColumnName="AnalysisName" />
+                <ScalarProperty Name="AnalysisValue" ColumnName="AnalysisValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Batch">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Batch">
+              <MappingFragment StoreEntitySet="Product_Number_Batch">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Product_Number_ID" ColumnName="Product_Number_ID" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="Mass" ColumnName="Mass" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Inbound_Shipment_ID" ColumnName="Inbound_Shipment_ID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Batch_Comment_ID" ColumnName="Batch_Comment_ID" />
+                <ScalarProperty Name="Location_ID" ColumnName="Location_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Batch_History">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Batch_History">
+              <MappingFragment StoreEntitySet="Product_Number_Batch_History">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Batch_ID" ColumnName="Batch_ID" />
+                <ScalarProperty Name="Product_Number_ID" ColumnName="Product_Number_ID" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="Mass" ColumnName="Mass" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Inbound_Shipment_ID" ColumnName="Inbound_Shipment_ID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Batch_Comment_ID" ColumnName="Batch_Comment_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Batch_Location">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Batch_Location">
+              <MappingFragment StoreEntitySet="Product_Number_Batch_Location">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Location_Name" ColumnName="Location_Name" />
+                <ScalarProperty Name="Client_Product_ID" ColumnName="Client_Product_ID" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="isAllowed" ColumnName="isAllowed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Batch_Status">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Batch_Status">
+              <MappingFragment StoreEntitySet="Product_Number_Batch_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Number_Batch_Trans">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Number_Batch_Trans">
+              <MappingFragment StoreEntitySet="Product_Number_Batch_Trans">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Batch_ID" ColumnName="Batch_ID" />
+                <ScalarProperty Name="Product_Number_ID" ColumnName="Product_Number_ID" />
+                <ScalarProperty Name="BatchNumber" ColumnName="BatchNumber" />
+                <ScalarProperty Name="Mass" ColumnName="Mass" />
+                <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+                <ScalarProperty Name="Inbound_Shipment_ID" ColumnName="Inbound_Shipment_ID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Batch_Comment_ID" ColumnName="Batch_Comment_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Quality">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Quality">
+              <MappingFragment StoreEntitySet="Product_Quality">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="QualityName" ColumnName="QualityName" />
+                <ScalarProperty Name="QualityCode" ColumnName="QualityCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Status">
+            <EntityTypeMapping TypeName="SAMYModel.Product_Status">
+              <MappingFragment StoreEntitySet="Product_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SAMYModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+                <ScalarProperty Name="rstatus" ColumnName="rstatus" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrders">
+            <EntityTypeMapping TypeName="SAMYModel.SalesOrder">
+              <MappingFragment StoreEntitySet="SalesOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cleint_ID" ColumnName="Cleint_ID" />
+                <ScalarProperty Name="OrderAction" ColumnName="OrderAction" />
+                <ScalarProperty Name="OrderActionStatus" ColumnName="OrderActionStatus" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderRefNum" ColumnName="OrderRefNum" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="PaymentTermCode" ColumnName="PaymentTermCode" />
+                <ScalarProperty Name="PaymentTermDesc" ColumnName="PaymentTermDesc" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="RecordUpdated" ColumnName="RecordUpdated" />
+                <ScalarProperty Name="fileReceivedTime" ColumnName="fileReceivedTime" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrder_Customer">
+            <EntityTypeMapping TypeName="SAMYModel.SalesOrder_Customer">
+              <MappingFragment StoreEntitySet="SalesOrder_Customer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SalesOrder_ID" ColumnName="SalesOrder_ID" />
+                <ScalarProperty Name="relationShip" ColumnName="relationShip" />
+                <ScalarProperty Name="Customer_No" ColumnName="Customer_No" />
+                <ScalarProperty Name="Customer_Name" ColumnName="Customer_Name" />
+                <ScalarProperty Name="Customer_Address1" ColumnName="Customer_Address1" />
+                <ScalarProperty Name="Customer_Address2" ColumnName="Customer_Address2" />
+                <ScalarProperty Name="Customer_Address3" ColumnName="Customer_Address3" />
+                <ScalarProperty Name="Customer_City" ColumnName="Customer_City" />
+                <ScalarProperty Name="Customer_CountryCode" ColumnName="Customer_CountryCode" />
+                <ScalarProperty Name="Customer_CountryName" ColumnName="Customer_CountryName" />
+                <ScalarProperty Name="Customer_PostalCode" ColumnName="Customer_PostalCode" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalesOrder_Line">
+            <EntityTypeMapping TypeName="SAMYModel.SalesOrder_Line">
+              <MappingFragment StoreEntitySet="SalesOrder_Line">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SalesOrder_ID" ColumnName="SalesOrder_ID" />
+                <ScalarProperty Name="OrderLineAction" ColumnName="OrderLineAction" />
+                <ScalarProperty Name="OrderLineNo" ColumnName="OrderLineNo" />
+                <ScalarProperty Name="LineActionStatus" ColumnName="LineActionStatus" />
+                <ScalarProperty Name="FOBCode" ColumnName="FOBCode" />
+                <ScalarProperty Name="FOBName" ColumnName="FOBName" />
+                <ScalarProperty Name="CustPONo" ColumnName="CustPONo" />
+                <ScalarProperty Name="OrderedQuantity" ColumnName="OrderedQuantity" />
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="SchedShipDate" ColumnName="SchedShipDate" />
+                <ScalarProperty Name="NumberOfContainer" ColumnName="NumberOfContainer" />
+                <ScalarProperty Name="NumberOfBundles" ColumnName="NumberOfBundles" />
+                <ScalarProperty Name="TransportationModeCode" ColumnName="TransportationModeCode" />
+                <ScalarProperty Name="TransportationModeDesc" ColumnName="TransportationModeDesc" />
+                <ScalarProperty Name="AlcanItemNo" ColumnName="AlcanItemNo" />
+                <ScalarProperty Name="CommonItemNo" ColumnName="CommonItemNo" />
+                <ScalarProperty Name="AlloySource" ColumnName="AlloySource" />
+                <ScalarProperty Name="AlloyNo" ColumnName="AlloyNo" />
+                <ScalarProperty Name="VesselName" ColumnName="VesselName" />
+                <ScalarProperty Name="VoyageNumber" ColumnName="VoyageNumber" />
+                <ScalarProperty Name="ScheduledSailingDate" ColumnName="ScheduledSailingDate" />
+                <ScalarProperty Name="LoadPort" ColumnName="LoadPort" />
+                <ScalarProperty Name="DestinationPort" ColumnName="DestinationPort" />
+                <ScalarProperty Name="BookingNo" ColumnName="BookingNo" />
+                <ScalarProperty Name="ShippingLine" ColumnName="ShippingLine" />
+                <ScalarProperty Name="ShipTolMax" ColumnName="ShipTolMax" />
+                <ScalarProperty Name="ShipTolMin" ColumnName="ShipTolMin" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAMY_Client">
+            <EntityTypeMapping TypeName="SAMYModel.SAMY_Client">
+              <MappingFragment StoreEntitySet="SAMY_Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientLocation" ColumnName="ClientLocation" />
+                <ScalarProperty Name="CtrateDate" ColumnName="CtrateDate" />
+                <ScalarProperty Name="Updatedate" ColumnName="Updatedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAMY_Products">
+            <EntityTypeMapping TypeName="SAMYModel.SAMY_Products">
+              <MappingFragment StoreEntitySet="SAMY_Products">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ProdutName" ColumnName="ProdutName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

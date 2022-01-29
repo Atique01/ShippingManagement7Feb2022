@@ -1,0 +1,59 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+
+
+
+}
+@model ShippingManagmeent.Role
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Role</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Role1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rstatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CtrateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CtrateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Updatedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Updatedate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
