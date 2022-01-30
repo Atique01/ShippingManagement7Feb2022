@@ -120,6 +120,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Inbound_Shipment_StatusController.cs" />
+    <Compile Include="Controllers\Product_NumberController.cs" />
     <Compile Include="Controllers\Product_StatusController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SAMY_ClientController.cs" />
@@ -258,7 +259,6 @@
     <Content Include="Content\bizadmin\demo\dist\img\body-bg.jpg" />
     <Content Include="Content\bizadmin\demo\dist\img\body-bg1.jpg" />
     <Content Include="Content\bizadmin\demo\dist\img\boxed-bg.jpg" />
-    <Content Include="Content\bizadmin\demo\dist\img\favicon-16x16.png" />
     <Content Include="Content\bizadmin\demo\dist\img\img1.jpg" />
     <Content Include="Content\bizadmin\demo\dist\img\img10.jpg" />
     <Content Include="Content\bizadmin\demo\dist\img\img11.png" />
@@ -386,6 +386,7 @@
     <Content Include="Content\fonts\fontomas-webfont.eot" />
     <Content Include="Content\fonts\fontomas-webfont.ttf" />
     <Content Include="Content\fonts\fontomas-webfont.woff" />
+    <Content Include="Content\bizadmin\demo\dist\img\favicon-16x16.png" />
     <None Include="packages.config" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -450,6 +451,13 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Product_Number\Create.cshtml" />
+    <Content Include="Views\Product_Number\Delete.cshtml" />
+    <Content Include="Views\Product_Number\Details.cshtml" />
+    <Content Include="Views\Product_Number\Edit.cshtml" />
+    <Content Include="Views\Product_Number\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
