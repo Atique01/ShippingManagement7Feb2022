@@ -168,6 +168,11 @@
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
+            @*@Html.Partial("Index");
+
+            @Session["UserDetails"]*@
+
+
             <!-- sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel -->
@@ -182,157 +187,23 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">PERSONAL</li>
                     <li class="active treeview">
-                        <a href="#"> <i class="icon-home"></i> <span>Dashboard</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li class="active"><a href="index.html"><i class="fa fa-angle-right"></i> Modern</a></li>
-                            <li><a href="~/Content/bizadmin/demo/index-classic.html"><i class="fa fa-angle-right"></i> Classic</a></li>
-                            <li><a href="~/Content/bizadmin/demo/index-agency.html"><i class="fa fa-angle-right"></i> Agency</a></li>
-                            <li><a href="~/Content/bizadmin/demo/index-analytics.html"><i class="fa fa-angle-right"></i> Analytics</a></li>
-                            <li><a href="~/Content/bizadmin/demo/index-ecommerce.html"><i class="fa fa-angle-right"></i> Ecommerce</a></li>
-                        </ul>
+                        @foreach (var item in (List<Menu>)(Session["UserDetails"]))
+                        {
+                            <a href="#"> <i class="icon-home"></i> <span> @Html.DisplayFor(modelItem => item.Menu1)</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                            <ul class="treeview-menu">
+                                @foreach (var sub in item.SubMenu)
+                                {
+                                    <li class="active"><a href="@sub.PageUrl"><i class="fa fa-angle-right"></i> @Html.DisplayFor(modelItem => sub.SubMenu1)</a></li>
+                                }
+                            </ul>
+                        }
                     </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-grid"></i> <span>Apps</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/apps-calendar.html"><i class="fa fa-angle-right"></i> Calendar</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-support-ticket.html"><i class="fa fa-angle-right"></i> Support Ticket</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-contacts.html"><i class="fa fa-angle-right"></i> Contact / Employee</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-contact-grid.html"><i class="fa fa-angle-right"></i> Contact  Grid</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-contact-details.html"><i class="fa fa-angle-right"></i> Contact Detail</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="ti-email"></i> <span>Inbox</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/apps-mailbox.html"><i class="fa fa-angle-right"></i> Mailbox</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-mailbox-detail.html"><i class="fa fa-angle-right"></i> Mailbox Detail</a></li>
-                            <li><a href="~/Content/bizadmin/demo/apps-compose-mail.html"><i class="fa fa-angle-right"></i> Compose Mail</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-frame"></i> <span>UI Elements</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/ui-cards.html" class="active"><i class="fa fa-angle-right"></i> Cards</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-user-card.html"><i class="fa fa-angle-right"></i> User Cards</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-tab.html"><i class="fa fa-angle-right"></i> Tab</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-grid.html"><i class="fa fa-angle-right"></i> Grid</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-notification.html"><i class="fa fa-angle-right"></i> Notification</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-progressbar.html"><i class="fa fa-angle-right"></i> Progressbar</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-range-slider.html"><i class="fa fa-angle-right"></i> Range slider</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-timeline.html"><i class="fa fa-angle-right"></i> Timeline</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-horizontal-timeline.html"> <i class="fa fa-angle-right"></i> Horizontal Timeline</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-breadcrumb.html"><i class="fa fa-angle-right"></i> Breadcrumb</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-typography.html"><i class="fa fa-angle-right"></i> Typography</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-bootstrap-switch.html"><i class="fa fa-angle-right"></i> Bootstrap Switch</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-tooltip-popover.html"><i class="fa fa-angle-right"></i> Tooltip & Popover</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-list-media.html"><i class="fa fa-angle-right"></i> List Media</a></li>
-                            <li><a href="~/Content/bizadmin/demo/ui-carousel.html"><i class="fa fa-angle-right"></i> Carousel</a></li>
-                        </ul>
-                    </li>
-                    <li class="header">FORMS, TABLE & WIDGETS</li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-note"></i> <span>Forms</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/form-elements.html"><i class="fa fa-angle-right"></i> Form Elements</a></li>
-                            <li><a href="~/Content/bizadmin/demo/form-validation.html"><i class="fa fa-angle-right"></i> Form Validation</a></li>
-                            <li><a href="~/Content/bizadmin/demo/form-wizard.html"><i class="fa fa-angle-right"></i> Form Wizard</a></li>
-                            <li><a href="~/Content/bizadmin/demo/form-layouts.html"><i class="fa fa-angle-right"></i> Form Layouts</a></li>
-                            <li><a href="~/Content/bizadmin/demo/form-uploads.html"><i class="fa fa-angle-right"></i> Form File Upload</a></li>
-                            <li><a href="~/Content/bizadmin/demo/form-summernote.html"><i class="fa fa-angle-right"></i> Summernote</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="fa fa-table"></i> <span>Tables</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/table-basic.html"><i class="fa fa-angle-right"></i> Basic Tables</a></li>
-                            <li><a href="~/Content/bizadmin/demo/table-layout.html"><i class="fa fa-angle-right"></i> Table Layouts</a></li>
-                            <li><a href="~/Content/bizadmin/demo/table-data-table.html"><i class="fa fa-angle-right"></i> Data Tables</a></li>
-                            <li><a href="~/Content/bizadmin/demo/table-jsgrid.html"><i class="fa fa-angle-right"></i> Js Grid Table</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-layers"></i> <span>Widgets</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/widget-data.html"><i class="fa fa-angle-right"></i> Data Widgets</a></li>
-                            <li><a href="~/Content/bizadmin/demo/widget-apps.html"><i class="fa fa-angle-right"></i> Apps Widgets</a></li>
-                        </ul>
-                    </li>
-                    <li class="header">EXTRA COMPONENTS</li>
-                    <li class="treeview">
-                        <a href="#"><i class="icon-chart"></i> <span>Charts</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/chart-morris.html"><i class="fa fa-angle-right"></i> Morris Chart</a></li>
-                            <li><a href="~/Content/bizadmin/demo/chart-chartist.html"><i class="fa fa-angle-right"></i> Chartis Chart</a></li>
-                            <li><a href="~/Content/bizadmin/demo/chart-knob.html"><i class="fa fa-angle-right"></i> Knob Chart</a></li>
-                            <li><a href="~/Content/bizadmin/demo/chart-chart-js.html"><i class="fa fa-angle-right"></i> Chartjs</a></li>
-                            <li><a href="~/Content/bizadmin/demo/chart-peity.html"><i class="fa fa-angle-right"></i> Peity Chart</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-docs"></i> <span>Sample Pages</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/pages-blank.html"><i class="fa fa-angle-right"></i> Blank page</a></li>
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-angle-right"></i> Authentication <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="~/Content/bizadmin/demo/pages-login.html"><i class="fa fa-angle-right"></i> Login 1</a></li>
-                                    <li><a href="~/Content/bizadmin/demo/pages-login-2.html"><i class="fa fa-angle-right"></i> Login 2</a></li>
-                                    <li><a href="~/Content/bizadmin/demo/pages-register.html"><i class="fa fa-angle-right"></i> Register</a></li>
-                                    <li><a href="~/Content/bizadmin/demo/pages-register2.html"><i class="fa fa-angle-right"></i> Register 2</a></li>
-                                    <li><a href="~/Content/bizadmin/demo/pages-lockscreen.html"><i class="fa fa-angle-right"></i> Lockscreen</a></li>
-                                    <li><a href="~/Content/bizadmin/demo/pages-recover-password.html"><i class="fa fa-angle-right"></i> Recover password</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="~/Content/bizadmin/demo/pages-profile.html"><i class="fa fa-angle-right"></i> Profile page</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-invoice.html"><i class="fa fa-angle-right"></i> Invoice</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-treeview.html"><i class="fa fa-angle-right"></i> Treeview</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-pricing.html"><i class="fa fa-angle-right"></i> Pricing</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-gallery.html"><i class="fa fa-angle-right"></i> Gallery</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-faq.html"><i class="fa fa-angle-right"></i> Faqs</a></li>
-                            <li><a href="~/Content/bizadmin/demo/pages-404.html"><i class="fa fa-angle-right"></i> 404 Error Page</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-location-pin"></i> <span>Maps</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/map-google.html"><i class="fa fa-angle-right"></i> Google Maps</a></li>
-                            <li><a href="~/Content/bizadmin/demo/map-vector.html"><i class="fa fa-angle-right"></i> Vector Maps</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-energy"></i> <span>Icons</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="~/Content/bizadmin/demo/icon-fontawesome.html"><i class="fa fa-angle-right"></i> Fontawesome Icons</a></li>
-                            <li><a href="~/Content/bizadmin/demo/icon-themify.html"><i class="fa fa-angle-right"></i> Themify Icons</a></li>
-                            <li><a href="~/Content/bizadmin/demo/icon-weather.html"><i class="fa fa-angle-right"></i> Weather Icons</a></li>
-                            <li><a href="~/Content/bizadmin/demo/icon-simple-lineicon.html"><i class="fa fa-angle-right"></i> Simple Lineicons</a></li>
-                            <li><a href="~/Content/bizadmin/demo/icon-flag.html"><i class="fa fa-angle-right"></i> Flag Icons</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"> <i class="icon-action-redo"></i> <span>Multilevel</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-angle-right"></i> Level One</a></li>
-                            <li class="treeview">
-                                <a href="#"><i class="fa fa-angle-right"></i> Level One <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-angle-right"></i> Level Two</a></li>
-                                    <li class="treeview">
-                                        <a href="#"><i class="fa fa-angle-right"></i> Level Two <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Level Three</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"></i> Level Three</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="fa fa-angle-right"></i> Level One</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </div>
             <!-- /.sidebar -->
+
+
         </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -346,7 +217,7 @@
             </div>
             <!-- Main content -->
             <div class="content">
-                <div class="row">
+                @*<div class="row">
                     <div class="col-lg-4 col-md-6 m-b-3">
                         <div class="widget-info bg-primary">
                             <div class="card-body">
@@ -389,10 +260,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <!-- /.row -->
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="info-box">
                            
                             @RenderBody()
@@ -400,7 +271,7 @@
                    
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    @*<div class="col-lg-4">
                         <div class="card m-b-3">
                             <div class="card-body">
                                 <div class="m-b-3 font-weight-bold">
@@ -432,13 +303,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
                 <!-- /.row -->
 
 
               
-                <div class="row">
+                <!--<div class="row">
                   
 
                     <div class="col-lg-5 m-b-3">
@@ -485,9 +356,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Recent Chats <span class="pull-right f-13"><a href="#">View All</a></span></h5>
-                                <div class="box-body">
+                                <div class="box-body">-->
                                     <!-- Conversations are loaded here -->
-                                    <div class="direct-chat-messages" style="height:377px;">
+                                    <!--<div class="direct-chat-messages" style="height:377px;">
                                         <div class="direct-chat-msg">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">firoz Pierce</span> <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> </div>
                                             <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img2.jpg" alt="user image">
@@ -495,9 +366,9 @@
                                         </div>
                                         <div class="direct-chat-msg right">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">Sarah Bullock</span> <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> </div>
-                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">
+                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">-->
                                             <!-- /.direct-chat-img -->
-                                            <div class="direct-chat-text"> You better believe it! </div>
+                                            <!--<div class="direct-chat-text"> You better believe it! </div>
                                         </div>
                                         <div class="direct-chat-msg">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">firoz Pierce</span> <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span> </div>
@@ -516,9 +387,9 @@
                                         </div>
                                         <div class="direct-chat-msg right">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">Sarah Bullock</span> <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> </div>
-                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">
+                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">-->
                                             <!-- /.direct-chat-img -->
-                                            <div class="direct-chat-text"> You better believe it! </div>
+                                            <!--<div class="direct-chat-text"> You better believe it! </div>
                                         </div>
                                         <div class="direct-chat-msg">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-left">firoz Pierce</span> <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span> </div>
@@ -527,9 +398,9 @@
                                         </div>
                                         <div class="direct-chat-msg right">
                                             <div class="direct-chat-info clearfix"> <span class="direct-chat-name pull-right">Sarah Bullock</span> <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span> </div>
-                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">
+                                            <img class="direct-chat-img" src="Content/bizadmin/demo/dist/img/img3.jpg" alt="user image">-->
                                             <!-- /.direct-chat-img -->
-                                            <div class="direct-chat-text"> You better believe it! </div>
+                                            <!--<div class="direct-chat-text"> You better believe it! </div>
                                         </div>
                                     </div>
                                 </div>
@@ -547,7 +418,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <!-- /.row -->
             </div>
             <!-- /.content -->

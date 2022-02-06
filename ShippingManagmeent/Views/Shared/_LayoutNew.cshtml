@@ -189,7 +189,7 @@
                         {
             <a href="#"> <i class="icon-home"></i> <span> @Html.DisplayFor(modelItem => item.Menu1)</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
                             <ul class="treeview-menu">
-                                @foreach (var sub in item.Submenu)
+                                @foreach (var sub in item.SubMenu)
                                 {
                 <li class="active"><a href="@sub.PageUrl"><i class="fa fa-angle-right"></i> @Html.DisplayFor(modelItem => sub.SubMenu1)</a></li>}
                             </ul>}

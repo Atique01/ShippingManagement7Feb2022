@@ -24,7 +24,7 @@ namespace ShippingManagmeent.Controllers
                 {
                     Id = x.Id,
                     Menu1 = x.Menu1,
-                  //  Submenu = getSubMenu(x.Id)
+                    SubMenu = getSubMenu(x.Id)
                 }).ToList();
 
                 Session["UserDetails"] = menu;

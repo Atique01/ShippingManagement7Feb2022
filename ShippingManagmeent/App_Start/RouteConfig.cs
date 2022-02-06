@@ -16,7 +16,7 @@ namespace ShippingManagmeent
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Samy_Products", action = "index", id = UrlParameter.Optional }
+                defaults: new { controller = "Menu", action = "index", id = UrlParameter.Optional }
             );
         }
     }
