@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ShippingManagmeent.Aspnet_Membership>
+
+@{
+    ViewBag.Title = "Index";
+     Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordQuestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordAnswer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsApproved)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsLocked)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordQuestion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasswordAnswer)
+            </td>
+            <td>
+
+                @*@Html.CheckBoxFor(modelItem => item.IsApproved)*@
+            </td>
+            <td>
+                @*@Html.CheckBoxFor(modelItem => item.IsLocked)*@
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Aspnet_MembershipId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Aspnet_MembershipId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Aspnet_MembershipId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -65,6 +65,13 @@
         <AssociationConnector Association="SAMYModel.FK_SalesOrder_Customer_SalesOrder" ManuallyRouted="false" />
         <AssociationConnector Association="SAMYModel.FK_SalesOrder_Line_SalesOrder" ManuallyRouted="false" />
         <AssociationConnector Association="SAMYModel.FK_SalesOrder_SAMY_Client" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SAMYModel.Aspnet_Membership" Width="1.5" PointX="14.625" PointY="1" />
+        <EntityTypeShape EntityType="SAMYModel.Aspnet_Users" Width="1.5" PointX="12.375" PointY="1.875" />
+        <EntityTypeShape EntityType="SAMYModel.DatabaseConnection" Width="1.5" PointX="13.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SAMYModel.Menu" Width="1.5" PointX="13.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SAMYModel.SubMenu" Width="1.5" PointX="13.375" PointY="11.75" />
+        <EntityTypeShape EntityType="SAMYModel.sysdiagram" Width="1.5" PointX="10.375" PointY="14.75" />
+        <AssociationConnector Association="SAMYModel.FK__Aspnet_Me__UserI__5AB9788F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
