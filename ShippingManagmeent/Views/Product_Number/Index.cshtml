@@ -1,0 +1,91 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+
+
+
+
+}
+
+
+@model IEnumerable<ShippingManagmeent.Product_Number>
+
+@{
+    ViewBag.Title = "Product Number List";
+}
+
+<h2>Product Number List</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransferDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsLocked)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LockedReason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockedBy)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.MES_RefID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Client_Products.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Quality.QualityName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_Status.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransferDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsLocked)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.LockedReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockedBy)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.MES_RefID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client_Products.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Quality.QualityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Status.Name)
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>*@
+        </tr>
+    }
+
+</table>
