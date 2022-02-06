@@ -95,7 +95,7 @@ namespace ShippingManagmeent.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aspnet_Membership).State = EntityState.Modified;
+                db.Entry(aspnet_Membership).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
