@@ -480,6 +480,8 @@
     <Content Include="Views\Aspnet_MemberShip\Details.cshtml" />
     <Content Include="Views\Aspnet_MemberShip\Edit.cshtml" />
     <Content Include="Views\Aspnet_MemberShip\Index.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

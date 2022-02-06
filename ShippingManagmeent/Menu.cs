@@ -19,5 +19,6 @@ namespace ShippingManagmeent
         public Nullable<System.DateTime> Createddate { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<int> Roleid { get; set; }
+        public List<SubMenu> SubMenu { get; set; }
     }
 }
