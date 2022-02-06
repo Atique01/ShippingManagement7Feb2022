@@ -12,14 +12,12 @@ namespace ShippingManagmeent
     using System;
     using System.Collections.Generic;
     
-    public partial class Client_Product_Plan
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int Client_Product_ID { get; set; }
-        public int MassPlan { get; set; }
-        public int PlannedMonth { get; set; }
-        public int PlannedYear { get; set; }
-    
-        public virtual Client_Products Client_Products { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

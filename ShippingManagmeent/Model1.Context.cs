@@ -56,5 +56,11 @@ namespace ShippingManagmeent
         public DbSet<SalesOrder_Line> SalesOrder_Line { get; set; }
         public DbSet<SAMY_Client> SAMY_Client { get; set; }
         public DbSet<SAMY_Products> SAMY_Products { get; set; }
+        public DbSet<Aspnet_Membership> Aspnet_Membership { get; set; }
+        public DbSet<Aspnet_Users> Aspnet_Users { get; set; }
+        public DbSet<DatabaseConnection> DatabaseConnections { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<SubMenu> SubMenus { get; set; }
+        public DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

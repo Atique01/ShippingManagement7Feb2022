@@ -12,14 +12,18 @@ namespace ShippingManagmeent
     using System;
     using System.Collections.Generic;
     
-    public partial class Client_Product_Plan
+    public partial class Aspnet_Users
     {
-        public int ID { get; set; }
-        public int Client_Product_ID { get; set; }
-        public int MassPlan { get; set; }
-        public int PlannedMonth { get; set; }
-        public int PlannedYear { get; set; }
+        public Aspnet_Users()
+        {
+            this.Aspnet_Membership = new HashSet<Aspnet_Membership>();
+        }
     
-        public virtual Client_Products Client_Products { get; set; }
+        public int UserId { get; set; }
+        public Nullable<System.DateTime> CreationDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+    
+        public virtual ICollection<Aspnet_Membership> Aspnet_Membership { get; set; }
     }
 }

@@ -12,14 +12,12 @@ namespace ShippingManagmeent
     using System;
     using System.Collections.Generic;
     
-    public partial class Client_Product_Plan
+    public partial class Menu
     {
-        public int ID { get; set; }
-        public int Client_Product_ID { get; set; }
-        public int MassPlan { get; set; }
-        public int PlannedMonth { get; set; }
-        public int PlannedYear { get; set; }
-    
-        public virtual Client_Products Client_Products { get; set; }
+        public int Id { get; set; }
+        public string Menu1 { get; set; }
+        public Nullable<System.DateTime> Createddate { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<int> Roleid { get; set; }
     }
 }
