@@ -11,11 +11,14 @@ namespace ShippingManagmeent
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Aspnet_Membership
     {
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
+        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+        ErrorMessage  = "Please enter correct email address")]
         public string Email { get; set; }
         public string PasswordQuestion { get; set; }
         public string PasswordAnswer { get; set; }
